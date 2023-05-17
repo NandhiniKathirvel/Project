@@ -1,0 +1,54 @@
+﻿<Window x:Class="EmployeeDetails.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeDetails"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="440*"/>
+            <RowDefinition Height="257*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="56,67,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="42"/>
+        <Label x:Name="lblDesignation" Content="Designation" HorizontalAlignment="Left" Margin="24,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.799,0.289" Grid.Column="1" Height="26" Width="73"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="127,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox x:Name="txtDesignation" HorizontalAlignment="Left" Margin="127,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <TextBox x:Name="txtEmployeeId" Visibility="Hidden" HorizontalAlignment="Left" Margin="77,28,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="127,143,0,0" VerticalAlignment="Top" Click="btnSave_Click" Grid.Column="1" Height="20" Width="29"/>
+        <DataGrid x:Name="dgEmployee" Margin="326,153,24,26"
+                  xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
+                  CanUserAddRows="True"
+                  ItemsSource="{Binding}"
+                  AutoGenerateColumns="False" Grid.Column="1" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Employee ID" Binding="{Binding Path=EmployeeID}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Designation" Binding="{Binding Path=Designation}"/>
+                <DataGridTemplateColumn Header="Edit Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnEditEmployee">Edit</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete Action">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnDeleteEmployee">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnLoadEmployee" Content="Load Employee" HorizontalAlignment="Left" Margin="326,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.027,1.84" Height="22" Width="432" Click="btnLoadEmployee_Click" Grid.Column="1"/>
+        <Label x:Name="lblMessage" Content="" HorizontalAlignment="Left" Margin="24,184,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="249"/>
+
+    </Grid>
+</Window>
